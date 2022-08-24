@@ -6,9 +6,9 @@ const capitalizeFirstLetter = (string) => {
 export function EmptyInformation() {
   return (
     <>
-      <div className="input input_empty">vacio</div>
-      <div className="input input_empty">vacio</div>
-      <div className="input input_empty">vacio</div>
+      <div className="input input_empty">Apellido paterno</div>
+      <div className="input input_empty">Apellido materno</div>
+      <div className="input input_empty">Nombres</div>
     </>
   );
 }
