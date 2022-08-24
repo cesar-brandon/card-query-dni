@@ -1,0 +1,37 @@
+@import "../../style/abstracts/variables";
+@import "../../style/abstracts/mixins";
+
+.message.error {
+  @include containerMessage($error, $error-shadow);
+}
+.message.warning {
+  @include containerMessage($warning, $warning-shadow, #000);
+}
+.message.success {
+  @include containerMessage($success, $success-shadow, #000);
+}
+
+.message {
+  position: fixed;
+  top: 2rem;
+  min-width: 18rem;
+  height: 3rem;
+  font-weight: 500;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: entranceAnimation 300ms cubic-bezier(0.68, -0.55, 0.265, 1.35);
+  label {
+    margin: 0px 30px;
+  }
+}
+
+@keyframes entranceAnimation {
+  from {
+    transform: translateY(-200px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}

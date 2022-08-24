@@ -1,0 +1,8 @@
+@import "../../style/abstracts/mixins";
+
+.Home {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  @include align(center, center);
+}

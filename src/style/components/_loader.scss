@@ -1,0 +1,32 @@
+.container_loader {
+  width: 65%;
+  max-width: 22rem;
+  height: 9.2rem;
+  border-radius: 20px;
+  position: absolute;
+  background: rgba(33, 32, 38, 0.72);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #fff;
+    border-bottom-color: #8a77ff;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    position: absolute;
+    animation: rotation 1s linear infinite;
+  }
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

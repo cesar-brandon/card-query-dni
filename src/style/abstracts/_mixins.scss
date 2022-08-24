@@ -1,0 +1,32 @@
+// aliniar items
+@mixin align($x, $y) {
+  align-items: $x;
+  justify-content: $y;
+}
+
+//inputs
+@mixin container_input {
+  width: 80%;
+  border-radius: 15px;
+  background-color: $tertiary;
+  overflow: hidden;
+  opacity: 1;
+  visibility: visible;
+  box-sizing: border-box;
+  border: 1px solid $secondary;
+}
+
+//messages
+@mixin containerMessage($color, $shadow, $txtColor: #fff) {
+  background: $color;
+  color: $txtColor;
+  filter: $shadow;
+}
+
+// size - card
+@mixin desktop {
+  height: 40rem;
+}
+@mixin mobile {
+  height: 30rem;
+}

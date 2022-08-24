@@ -1,0 +1,126 @@
+@import "../../style/abstracts/variables";
+@import "../../style/abstracts/mixins";
+
+.Form {
+  margin: 1rem;
+  width: 30rem;
+  height: 40rem;
+  border-radius: 20px;
+  background-color: $primary;
+  display: grid;
+  grid-template-rows: 30% 70%;
+  box-sizing: border-box;
+  padding-top: 2rem;
+  padding-left: 4rem;
+
+  h4 {
+    color: $tertiary;
+    font-weight: 400;
+  }
+
+  .input {
+    border: 0;
+    outline: none;
+    box-shadow: none;
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    padding: 8px 15px;
+    border-bottom: 1px solid $secondary;
+    width: 100%;
+    font-size: 15px;
+    background-color: $primary;
+    color: #fff;
+    font-family: "Poppins";
+    border-radius: 15px;
+    border: 1px solid $secondary;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+    &::-webkit-input-placeholder {
+      color: $secondary;
+    }
+  }
+  .input.error {
+    border: 1px solid #ff5858;
+    color: #ff5858;
+  }
+  .input.success {
+    border: 1px solid $success;
+    color: $success;
+  }
+  .dni_data {
+    color: $tertiary;
+    display: flex;
+    flex-direction: column;
+    @include align(start, start);
+
+    .container_dni {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      .label {
+        width: 80%;
+        padding: 8px 8px;
+        box-sizing: border-box;
+        font-size: 13px;
+        color: grey;
+      }
+      .label.error {
+        color: $error;
+      }
+      .label.success {
+        color: $success;
+      }
+    }
+
+    .personal_data {
+      @include align(center, center);
+      color: $primary;
+    }
+  }
+  .container_input_data {
+    @include container_input;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .input {
+      padding-left: 3rem;
+    }
+    .input.input_empty {
+      color: $tertiary;
+    }
+  }
+  .container_input_dni {
+    @include container_input;
+    border: none;
+    display: grid;
+    grid-template-columns: 80% auto;
+
+    button {
+      background-color: $quaternary;
+      border: none;
+      display: flex;
+      @include align(center, center);
+      cursor: pointer;
+      border-radius: 0 15px 15px 0;
+      img {
+        width: 1.2rem;
+      }
+      &:hover {
+        img {
+          filter: invert(100%);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .Form {
+    height: 30rem;
+    grid-template-rows: 40% auto;
+  }
+}

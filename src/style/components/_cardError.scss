@@ -1,0 +1,55 @@
+@import "../abstracts/variables";
+@import "../../style/abstracts/mixins";
+
+.container_card_error {
+  width: 90%;
+  margin: 1rem;
+  max-width: 30rem;
+  position: absolute;
+  @include desktop;
+  border-radius: 20px;
+  background: rgba(33, 32, 38, 0.72);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba($color: #fff, $alpha: 0.2);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  .container_card_error_items {
+    width: 50%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  .icon_error {
+    width: 10rem;
+    height: 10rem;
+  }
+  .icon_close {
+    width: 1.3rem;
+    height: 1.3rem;
+    position: absolute;
+    filter: invert(100%);
+    top: 0;
+    right: 0;
+    margin: 1.5rem;
+    &:hover {
+      filter: invert(43%) sepia(14%) saturate(4424%) hue-rotate(324deg)
+        brightness(102%) contrast(91%);
+    }
+  }
+  label {
+    color: #fff;
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .container_card_error {
+    @include mobile;
+  }
+}
