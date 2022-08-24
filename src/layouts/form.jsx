@@ -12,7 +12,12 @@ import {
 
 export default function Form(props) {
   const [users, setUsers] = useState([]);
-  const [dni, setDni] = useState({ value: "", valid: null, style: "" });
+  const [dni, setDni] = useState({
+    value: "",
+    valid: null,
+    style: "",
+    message: "",
+  });
   const [loading, setLoading] = useState(false);
   const [deployMessage, setDeployMessage] = useState({
     value: "",
@@ -47,14 +52,20 @@ export default function Form(props) {
       if (res.data.message === "no encontrado") {
         setErrorAlert({ value: "No encontrado", valid: true });
         setDni({ ...dni, value: "" });
-        visibleMessage("error");
+        setUsers("");
+        setLoading(false);
+        return visibleMessage("error");
       }
       setUsers(res.data.result);
+      setDni({ ...dni, message: res.data.message });
     } catch (error) {
       setErrorAlert({ value: "Error del servidor", valid: true });
       throw error;
     }
     setLoading(false);
+    if (dni.style === "success") {
+      return visibleMessage("success");
+    }
   };
 
   const visibleMessage = (state) => {
@@ -71,8 +82,7 @@ export default function Form(props) {
       return visibleMessage("error");
     }
     if (dni.style === "success") {
-      visibleMessage("success");
-      return getUserData();
+      getUserData();
     }
     if (dni.value === "") {
       visibleMessage("warning");
