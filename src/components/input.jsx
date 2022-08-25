@@ -15,7 +15,7 @@ export default function Input({ dni, setDni, expression }) {
         setDni({ ...dni, valid: false, style: "error" });
       }
       if (dni.value.length < 8) {
-        setDni({ ...dni, valid: false, style: "" });
+        setDni({ ...dni, style: "" });
       }
     }
   };

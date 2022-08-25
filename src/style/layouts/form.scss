@@ -1,6 +1,18 @@
 @import "../../style/abstracts/variables";
 @import "../../style/abstracts/mixins";
 
+@keyframes bugMovement {
+  0% {
+    transform: translateX(-10px);
+  }
+  50% {
+    transform: translateX(-0px);
+  }
+  100% {
+    transform: translateX(-10px);
+  }
+}
+
 .container_form {
   margin: 1rem;
   width: 30rem;
@@ -61,6 +73,7 @@
   .input.error {
     border: 1px solid #ff5858;
     color: #ff5858;
+    animation: bugMovement 300ms;
   }
   .input.success {
     border: 1px solid $success;
@@ -119,7 +132,6 @@
   .container_input_dni {
     width: 80%;
     border-radius: 15px;
-    overflow: hidden;
     box-sizing: border-box;
     border: 1px solid $secondary;
     border: none;

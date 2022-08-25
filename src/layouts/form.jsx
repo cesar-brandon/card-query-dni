@@ -80,13 +80,13 @@ export default function Form(props) {
 
   const changeUserData = (e) => {
     e.preventDefault();
-    if (dni.value.length < 8) {
-      visibleMessage("error");
-      setDni({ ...dni, valid: false, style: "error" });
+    let dniValue = dni.value.length;
+
+    if (dniValue < 8 && dniValue > 0) {
+      setDni({ ...dni, style: "error" });
     }
     if (dni.style === "error") {
       setUsers("");
-      return visibleMessage("error");
     }
     if (dni.style === "success") {
       getUserData();
