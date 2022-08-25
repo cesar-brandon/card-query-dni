@@ -28,6 +28,8 @@ export default function Form(props) {
     valid: null,
   });
 
+  const [fold, setFold] = useState("");
+
   const getUserData = async () => {
     setLoading(true);
     try {
@@ -53,8 +55,8 @@ export default function Form(props) {
         setErrorAlert({ value: "No encontrado", valid: true });
         setDni({ ...dni, value: "" });
         setUsers("");
-        setLoading(false);
-        return visibleMessage("error");
+        return setLoading(false);
+        visibleMessage("error");
       }
       setUsers(res.data.result);
       setDni({ ...dni, message: res.data.message });
@@ -64,6 +66,7 @@ export default function Form(props) {
     }
     setLoading(false);
     if (dni.style === "success") {
+      setFold("open");
       return visibleMessage("success");
     }
   };
@@ -77,6 +80,10 @@ export default function Form(props) {
 
   const changeUserData = (e) => {
     e.preventDefault();
+    if (dni.value.length < 8) {
+      visibleMessage("error");
+      setDni({ ...dni, valid: false, style: "error" });
+    }
     if (dni.style === "error") {
       setUsers("");
       return visibleMessage("error");
@@ -101,33 +108,36 @@ export default function Form(props) {
       {errorAlert && (
         <CardError errorAlert={errorAlert} setErrorAlert={setErrorAlert} />
       )}
-      <div className="Form">
-        <form className="dni_data">
-          <h4>Ingresar numero de DNI :</h4>
-          <div className="container_dni">
-            <div className="container_input_dni">
-              <Input dni={dni} setDni={setDni} expression={/^[0-9]{8}$/} />
-              <button onClick={changeUserData}>
-                <img src={SearchIcon} alt="ok" />
-              </button>
+      <div className={`container_form ${fold}`}>
+        <div className="Form">
+          <form className="dni_data">
+            <h4>Ingresar numero de DNI :</h4>
+            <div className="container_dni">
+              <div className="container_input_dni">
+                <Input dni={dni} setDni={setDni} expression={/^[0-9]{8}$/} />
+                <button onClick={changeUserData}>
+                  <img src={SearchIcon} alt="ok" />
+                  Consultar
+                </button>
+              </div>
+              {dni.style === "error" && (
+                <label className={`label ${dni.style}`}>
+                  El campo debe contener 8 digitos
+                </label>
+              )}
             </div>
-            {dni.style === "error" && (
-              <label className={`label ${dni.style}`}>
-                El campo debe contener 8 digitos
-              </label>
-            )}
-          </div>
-        </form>
-        <div className="personal_data">
-          <h4>Datos personales :</h4>
-          <div className="container_input_data">
-            {loading && <Loader />}
+          </form>
+          <div className="personal_data">
+            <h4>Datos personales :</h4>
+            <div className="container_input_data">
+              {loading && <Loader />}
 
-            {_.isEmpty(users) ? (
-              <EmptyInformation />
-            ) : (
-              <InformationUser users={users} />
-            )}
+              {_.isEmpty(users) ? (
+                <EmptyInformation />
+              ) : (
+                <InformationUser users={users} />
+              )}
+            </div>
           </div>
         </div>
       </div>

@@ -1,24 +1,42 @@
 @import "../../style/abstracts/variables";
 @import "../../style/abstracts/mixins";
 
-.Form {
-  margin: 1rem;
+.container_form {
+  margin: 2rem;
   width: 30rem;
-  height: 35rem;
+  height: 18rem;
   border-radius: 20px;
+  overflow: hidden;
+}
+
+.container_form.open {
+  height: 35rem;
+}
+.Form {
+  width: 100%;
+  height: 35rem;
   background-color: $primary;
   display: grid;
-  grid-template-rows: 30% 70%;
+  grid-template-rows: 40% auto;
   box-sizing: border-box;
   padding-top: 2rem;
   padding-left: 4rem;
   overflow: hidden;
+  gap: 2rem;
 
   h4 {
     color: $tertiary;
     font-weight: 400;
   }
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
   .input {
     border: 0;
     outline: none;
@@ -28,7 +46,6 @@
     line-height: 30px;
     padding: 8px 15px;
     border-bottom: 1px solid $secondary;
-    width: 100%;
     font-size: 15px;
     background-color: $primary;
     color: #fff;
@@ -89,26 +106,36 @@
     justify-content: center;
     .input {
       padding-left: 3rem;
+      width: 100%;
     }
     .input.input_empty {
       color: $tertiary;
     }
   }
   .container_input_dni {
-    @include container_input;
+    width: 80%;
+    border-radius: 15px;
+    overflow: hidden;
+    box-sizing: border-box;
+    border: 1px solid $secondary;
     border: none;
-    display: grid;
-    grid-template-columns: 80% auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 
     button {
+      width: 100%;
+      height: 3rem;
       background-color: $quaternary;
       border: none;
       display: flex;
       @include align(center, center);
       cursor: pointer;
-      border-radius: 0 15px 15px 0;
+      border-radius: 20px;
+      color: #fff;
+      font-size: 15px;
       img {
-        width: 1.2rem;
+        display: none;
       }
       &:hover {
         img {
@@ -120,11 +147,11 @@
 }
 
 @media screen and (max-width: 760px) {
-  .Form {
-    height: 30rem;
-    grid-template-rows: 40% auto;
-    .input {
-      font-size: 13px;
+  .container_form {
+    .Form {
+      .input {
+        font-size: 13px;
+      }
     }
   }
 }

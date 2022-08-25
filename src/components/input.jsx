@@ -10,8 +10,12 @@ export default function Input({ dni, setDni, expression }) {
     if (expression) {
       if (result) {
         setDni({ ...dni, valid: true, style: "success" });
-      } else {
+      }
+      if (dni.value.length > 8) {
         setDni({ ...dni, valid: false, style: "error" });
+      }
+      if (dni.value.length < 8) {
+        setDni({ ...dni, valid: false, style: "" });
       }
     }
   };
