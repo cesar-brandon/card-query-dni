@@ -111,8 +111,10 @@ export default function Form(props) {
       <div className={`container_form ${fold}`}>
         <div className="Form">
           <form className="dni_data">
-            <h4>Ingresar numero de DNI :</h4>
             <div className="container_dni">
+              <div className="container_subtitle">
+                <h4>Ingresar numero de DNI :</h4>
+              </div>
               <div className="container_input_dni">
                 <Input dni={dni} setDni={setDni} expression={/^[0-9]{8}$/} />
                 <button onClick={changeUserData}>
@@ -128,7 +130,9 @@ export default function Form(props) {
             </div>
           </form>
           <div className="personal_data">
-            <h4>Datos personales :</h4>
+            <div className="container_subtitle">
+              <h4>Datos personales :</h4>
+            </div>
             <div className="container_input_data">
               {loading && <Loader />}
 

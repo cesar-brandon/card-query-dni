@@ -4,7 +4,7 @@
 .container_form {
   margin: 2rem;
   width: 30rem;
-  height: 18rem;
+  height: 16rem;
   border-radius: 20px;
   overflow: hidden;
 }
@@ -19,8 +19,8 @@
   display: grid;
   grid-template-rows: 40% auto;
   box-sizing: border-box;
-  padding-top: 2rem;
-  padding-left: 4rem;
+  // padding-top: 2rem;
+  // padding-left: 4rem;
   overflow: hidden;
   gap: 2rem;
 
@@ -69,18 +69,18 @@
     color: $success;
   }
   .dni_data {
-    color: $tertiary;
     display: flex;
     flex-direction: column;
-    @include align(start, start);
+    margin-top: 1rem;
 
     .container_dni {
       width: 100%;
       display: flex;
       flex-direction: column;
+      align-items: center;
       .label {
         width: 80%;
-        padding: 8px 8px;
+        padding: 8px 15px;
         box-sizing: border-box;
         font-size: 13px;
         color: grey;
@@ -92,18 +92,20 @@
         color: $success;
       }
     }
+  }
+  .personal_data {
+    width: 100%;
 
-    .personal_data {
-      @include align(center, center);
-      color: $primary;
-    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .container_input_data {
     @include container_input;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    margin: 0 auto;
     .input {
       padding-left: 3rem;
       width: 100%;
@@ -111,6 +113,10 @@
     .input.input_empty {
       color: $tertiary;
     }
+  }
+  .container_subtitle {
+    width: 80%;
+    box-sizing: border-box;
   }
   .container_input_dni {
     width: 80%;
