@@ -51,14 +51,14 @@ export default function Form(props) {
           visibleMessage("error");
         });
 
-      if (res.data.message === "no encontrado") {
-        setErrorAlert({ value: "No encontrado", valid: true });
+      if (res.data.message === "No se encontraron registros") {
+        setErrorAlert({ value: "No se encontraron registros", valid: true });
         setDni({ ...dni, value: "" });
         setUsers("");
         return setLoading(false);
         visibleMessage("error");
       }
-      setUsers(res.data.result);
+      setUsers(res.data.data);
       setDni({ ...dni, message: res.data.message });
     } catch (error) {
       setErrorAlert({ value: "Error del servidor", valid: true });

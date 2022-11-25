@@ -18,8 +18,12 @@ export function InformationUser(props) {
 
   return (
     <>
-      <div className="input">{capitalizeFirstLetter(users.paterno)}</div>
-      <div className="input">{capitalizeFirstLetter(users.materno)}</div>
+      <div className="input">
+        {capitalizeFirstLetter(users.apellido_paterno)}
+      </div>
+      <div className="input">
+        {capitalizeFirstLetter(users.apellido_materno)}
+      </div>
       <div className="input">{capitalizeFirstLetter(users.nombres)}</div>
     </>
   );
